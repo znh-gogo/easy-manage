@@ -3,6 +3,15 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 
 Vue.use(Router)
+/**
+ * bug:修复router的promise问题。
+ * 也可以install @3.1.1意思的router也可以解决这个问题
+ */
+const originalPush = Router.prototype.push
+Router.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
+}
+
 
 const router = new Router({
   // mode: 'history',
@@ -115,24 +124,10 @@ const router = new Router({
           component: () => import('./views/Account/accountList.vue'),
           meta:{name:'用户列表',tab:true}
         },
-        
-        //广告
-        {
-          path: '/setAd',
-          name: 'setAd',
-          component: () => import('./views/Ad/adEdit.vue'),
-          meta:{name:'广告价钱与时长管理',tab:true}
-        },
-        {
-          path: '/Adlist',
-          name: 'Adlist',
-          component: () => import('./views/Ad/adList.vue'),
-          meta:{name:'广告申请列表管理',tab:true}
-        },
-        
       ]
     },
-    {path:'*',redirect:'/'},
+    {path:'/404',name:'404',component:()=>import('./views/404/index.vue')},
+    {path:'*',redirect:'/404'},
   ]
 })
 
@@ -140,6 +135,7 @@ router.beforeEach((to,from,next)=>{
   // if(!to.meta.isPublic && !sessionStorage.token){
   //   return next('/login')
   // }
+  
   window.document.title = '农商服务平台-'+to.meta.name || '农产品电商服务平台'
   next()
 })

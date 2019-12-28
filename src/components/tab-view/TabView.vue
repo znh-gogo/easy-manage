@@ -1,23 +1,26 @@
 <template>
     <div class="tab-view">
-
+        <!--tab栏-->
         <TabNav v-if="showNavTab" :tab-items="views" :current-item="currentView" @handleChangeTab="handleChangeTab"
                     @handelCloseTab="handelCloseTab" @handleCloseOthers="handleCloseOthers"
                     @handleCloseAll="handleCloseAll"></TabNav>
         <div style="padding:20px;">
+            <!--面包屑-->
             <el-breadcrumb separator="/">
                 <el-breadcrumb-item :to="'/homepage'">首页</el-breadcrumb-item>
                 <!-- <el-breadcrumb-item><a href="/">活动管理</a></el-breadcrumb-item> -->
                 <el-breadcrumb-item v-if="$route.meta.name">{{$route.meta.name}}</el-breadcrumb-item>
             </el-breadcrumb>
         </div>
-        <!-- <div style="height:30px;width:100%;background-color:#f1f1f1"></div> -->
+        <!--视图层-->
         <Scrollbar ref="scrollbar" padding="20px" class="tv-main-body">
             <template v-for="view in views">
+                <transition name="slide-fade" v-bind:key="view.id">
                 <component v-show="view === currentView" v-bind:is="view.component" :params="view.params"
                            :query="view.query"
                            :timestamp="view.timestamp"
-                           v-bind:key="view.id"></component>
+                           ></component>
+                           </transition>
             </template>
         </Scrollbar>
         
@@ -218,5 +221,18 @@ import Scrollbar from '../scrollbar/Scrollbar'
         /*padding: 20px;*/
     }
 
+    /* 可以设置不同的进入和离开动画 */
+    /* 设置持续时间和动画函数 */
+    .slide-fade-enter-active {
+    transition: all .5s ease;
+    }
+    .slide-fade-leave-active {
+    transition: all .5s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    }
+    .slide-fade-enter, .slide-fade-leave-to
+    /* .slide-fade-leave-active for below version 2.1.8 */ {
+    // transform: translateX(10px);
+    opacity: 0;
+    }
 
 </style>

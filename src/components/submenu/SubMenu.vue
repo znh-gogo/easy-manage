@@ -15,8 +15,7 @@
         background-color="#001529"
         text-color="#fff"
         active-text-color="#ffd04b">
-        <div v-for="(item,index) in subMenuContent" :key="index">
-            <el-submenu :index="index+''">
+            <el-submenu v-for="(item,index) in subMenuContent" :key="index" :index="index+''">
                 <template slot="title"><i :class="item.icon"></i><span>{{item.title}}</span></template>
                 <el-menu-item-group>
                 <template slot="title" v-if="item.subTitle!==''">{{item.subTitle}}</template>
@@ -25,58 +24,6 @@
                 </div>
                 </el-menu-item-group>
             </el-submenu>
-        </div>
-
-        <!-- <el-submenu index="2">
-            <template slot="title"><i class="el-icon-s-shop"></i><span>商品管理</span></template>
-            <el-menu-item-group>
-            <template slot="title">商品</template>
-            <el-menu-item index="/goodsList">商品列表</el-menu-item>
-            <el-menu-item index="/goodsAdd">商品类别</el-menu-item>
-            </el-menu-item-group>
-        </el-submenu>
-
-        <el-submenu index="3">
-            <template slot="title"><i class="el-icon-notebook-2"></i><span>文章管理</span></template>
-            <el-menu-item-group>
-            <template slot="title">文章</template>
-            <el-menu-item index="/articleClassAdd">新建文章分类</el-menu-item>
-            <el-menu-item index="/articleClassList">文章分类列表</el-menu-item>
-            <el-menu-item index="/articleAdd">新建文章</el-menu-item>
-            <el-menu-item index="/articleList">文章列表</el-menu-item>
-            </el-menu-item-group>
-        </el-submenu>
-
-
-        <el-submenu index="5">
-            <template slot="title"><i class="el-icon-user"></i><span>管理员管理</span></template>
-            <el-menu-item-group>
-            <template slot="title">管理员</template>
-            <el-menu-item index="/adminList">管理员列表</el-menu-item>
-            <el-menu-item index="/adminAdd">添加管理员</el-menu-item>
-            </el-menu-item-group>
-        </el-submenu>
-
-        <el-submenu index="6">
-            <template slot="title"><i class="el-icon-s-custom"></i><span>账户管理</span></template>
-            <el-menu-item-group>
-            <template slot="title">管理员</template>
-            <el-menu-item index="/accountList">账户列表</el-menu-item>
-            </el-menu-item-group>
-        </el-submenu>
-
-
-        <el-submenu index="9">
-            <template slot="title"><i class="el-icon-s-marketing"></i><span>广告管理</span></template>
-            <el-menu-item-group>
-            <template slot="title">管理员</template>
-            <el-menu-item index="/setAd">广告价格与时长</el-menu-item>
-            <el-menu-item index="/Adlist">广告申请列表</el-menu-item>
-            </el-menu-item-group>
-        </el-submenu> -->
-
-        
-
         </el-menu>
     </div>
 </template>
@@ -98,6 +45,7 @@ export default {
                     subTitle:'',
                     children:[
                         {
+                            indexTitle:'首页',
                             path:'/homepage'
                         }
                     ]
@@ -120,8 +68,8 @@ export default {
 
 <style scoped>
 .el-menu-vertical-demo:not(.el-menu--collapse) {
-    width: 200px;
+    max-width: 201px;
+    width:auto;
     min-height: 400px;
-    /* overflow-x: hidden; */
   }
 </style>

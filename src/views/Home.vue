@@ -1,10 +1,10 @@
 <template>
   <div class="home">
-    <el-container style="min-height: 100vh; ">
-      <el-aside style="background-color: #002140;width:auto;max-width:201px">
+    <el-container style="min-height: 100vh;">
+      <el-aside style="background-color: #002140;max-width:201px;width:auto;overflow-x: hidden;">
         <SubMenu
         :isCollapse="isCollapse"
-        :subMenuContent="subMenuContent"></SubMenu>
+        :subMenuContent="subMenuContent"></SubMenu> 
       </el-aside>
     
       <el-container style="position:relative;">
@@ -126,21 +126,6 @@ export default {
               }
             ]
           },
-          {
-            title:'广告管理',
-            icon:'el-icon-s-marketing',
-            subTitle:'广告',
-            children:[
-              {
-                indexTitle:'广告价格与时长',
-                path:'/setAd'
-              },
-              {
-                indexTitle:'广告申请列表',
-                path:'/Adlist'
-              }
-            ]
-          },
         ]
       }
     },
@@ -149,9 +134,7 @@ export default {
      getCollapse(e){
        this.isCollapse = e
      }
-
-    },
-    
+    } 
 }
 </script>
 
