@@ -15,12 +15,14 @@
         <!--视图层-->
         <Scrollbar ref="scrollbar" padding="20px" class="tv-main-body">
             <template v-for="view in views">
-                <transition name="slide-fade" v-bind:key="view.id">
+                <transition-group name="slide" v-bind:key="view.id" appear mode="out-in">
                 <component v-show="view === currentView" v-bind:is="view.component" :params="view.params"
                            :query="view.query"
                            :timestamp="view.timestamp"
+                           style="width:calc(100% - 10px)"
+                           v-bind:key="view.id"
                            ></component>
-                           </transition>
+                           </transition-group>
             </template>
         </Scrollbar>
         
@@ -223,16 +225,25 @@ import Scrollbar from '../scrollbar/Scrollbar'
 
     /* 可以设置不同的进入和离开动画 */
     /* 设置持续时间和动画函数 */
-    .slide-fade-enter-active {
-    transition: all .5s ease;
+    .slide-enter-active, .slide-leave-active {
+        transition: all 1.5s ease;
     }
-    .slide-fade-leave-active {
-    transition: all .5s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    .slide-enter {
+        opacity: 0;
+        transform: translateX(calc(100% - 20px));
+        // transition-delay:1s;
+        // position: relative;
+        // top:20px;
     }
-    .slide-fade-enter, .slide-fade-leave-to
-    /* .slide-fade-leave-active for below version 2.1.8 */ {
-    // transform: translateX(10px);
-    opacity: 0;
+    .slide-enter-to {
+        opacity: 1;
+    }
+    .slide-leave-active {
+        transition: all 1.5s ease;
+        opacity: 0;
+        transform: translateX(-100%);
+        position: absolute;
+        top:20px;
     }
 
 </style>

@@ -1,8 +1,8 @@
 <template>
     <div>
-        <div style="height:60px;display:flex;align-items:center;justify-content:center" v-if="!isCollapse"><img src="../../assets/title.jpg" style="width:90%;border-radius:10px;" alt=""></div>
+        <div style="height:60px;display:flex;align-items:center;justify-content:center;" v-if="!isCollapse"><img src="../../assets/title.jpg" style="width:90%;border-radius:10px;height:80%" alt=""></div>
         <div style="height:60px;line-height:60px;text-align:center;font-size:18px;padding:0 10px;color: #fff;" v-else>
-          农产
+          通用
         </div>
         <el-menu
         class="el-menu-vertical-demo"

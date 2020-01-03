@@ -109,7 +109,7 @@ export default {
 .login-card{
     width: 25rem;
     /* margin: 7rem auto; */
-    background: rgba(255, 255, 255, 0.5)
+    background: rgba(255, 255, 255, 0.3)
     /* position: absolute;
     left: 50%;
     top: 50%;

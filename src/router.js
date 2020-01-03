@@ -136,7 +136,7 @@ router.beforeEach((to,from,next)=>{
   //   return next('/login')
   // }
   
-  window.document.title = '农商服务平台-'+to.meta.name || '农产品电商服务平台'
+  window.document.title = '通用服务平台-'+to.meta.name || '通用服务平台'
   next()
 })
 
