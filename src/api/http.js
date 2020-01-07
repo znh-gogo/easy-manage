@@ -2,13 +2,16 @@ import axios from 'axios'
 import Vue from 'vue'
 import router from '../router'
 const http = axios.create({
-    baseURL:""
+    baseURL:"",
+    withCredentials:true,
+    // headers:{"Access-Control-Allow-Origin":"*"}
+    
 })
 
 http.interceptors.request.use(config  =>{
-    if (sessionStorage.token){
-        config.headers.Authorization= 'Bearer '+ (sessionStorage.token||'')
-    }
+    // if (sessionStorage.token){
+    //     config.headers.Authorization= 'Bearer '+ (sessionStorage.token||'')
+    // }
     return config
 },err =>{
     return Promise.reject(err)
@@ -17,13 +20,13 @@ http.interceptors.request.use(config  =>{
 http.interceptors.response.use(res =>{
     return res
 },err=>{
-    if(err.response.data.message){
-        Vue.prototype.$message.error(err.response.data.message)
+    if(err.response){
+        Vue.prototype.$message.error(err.response)
     }
     
-    if (err.response.status===401){
-        router.push('/login')
-    }
+    // if (err.response.status===401){
+        // router.push('/login')
+    // }
     return Promise.reject(err) 
 })
 

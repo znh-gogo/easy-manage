@@ -4,11 +4,11 @@ import {MOBILE,ADMIN} from './globol'
 
 const api = {
 // 登陆注册
-  login (data) {
-    return request(ADMIN+'/origin', data, 'post')
+  find(data) {
+    return request(ADMIN+'/find', data, 'get')
   },
   register(data) {
-    return request(MOBILE+'/register', data, 'post')
+    return request('/api/register', data, 'post')
   },
 
   //个人中心

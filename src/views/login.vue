@@ -5,7 +5,7 @@
             <div style="text-align:center;"><img src="../assets/title.jpg" style="border-radius:10px" alt=""></div>
             <el-form @submit.native.prevent="login">
                 <el-form-item label="用户名:">
-                    <el-input v-model="model.adminName" placeholder="请输入用户名"></el-input>
+                    <el-input v-model="model.name" placeholder="请输入用户名"></el-input>
                 </el-form-item>
                 <el-form-item label="密码:">
                     <el-input v-model="model.password" type="password" show-password placeholder="请输入密码"></el-input>
@@ -58,6 +58,8 @@ export default {
                 
                 this.$router.push('/')
                 // this.$message.success('登陆成功')
+
+
                 Notification({
                     title:'您好,登陆成功',
                     message:'希望您能拥有美好的一天，加油！',
@@ -66,15 +68,20 @@ export default {
                 })
                 
             } else if(this.value === 1){
-                
-                this.$router.push('/')
+                let form = new FormData()
+                form.append("name",this.model.name)
+                form.append("password",this.model.password)
+                this.$http.register(form).then(res=>{
+                    console.log(res)
+                })
+                // this.$router.push('/')
                 // this.$message.success('登陆成功')
-                Notification({
-                        title:'您好,登陆成功',
-                        message:'希望您能拥有美好的一天，加油！',
-                        type:'success',
-                        duration: 3000
-                    })
+                // Notification({
+                //         title:'您好,登陆成功',
+                //         message:'希望您能拥有美好的一天，加油！',
+                //         type:'success',
+                //         duration: 3000
+                //     })
                 
             }   
         },
