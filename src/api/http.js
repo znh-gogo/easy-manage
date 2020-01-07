@@ -25,8 +25,7 @@ http.interceptors.response.use(res =>{
     }
     
     // if (err.response.status===401){
-        // router.push('/login')
-    // }
+
     return Promise.reject(err) 
 })
 

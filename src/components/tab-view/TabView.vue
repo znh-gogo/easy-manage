@@ -8,7 +8,7 @@
             <!--面包屑-->
             <el-breadcrumb separator="/">
                 <el-breadcrumb-item :to="'/homepage'">首页</el-breadcrumb-item>
-                <!-- <el-breadcrumb-item><a href="/">活动管理</a></el-breadcrumb-item> -->
+                <el-breadcrumb-item>{{middleBread}}</el-breadcrumb-item>
                 <el-breadcrumb-item v-if="$route.meta.name">{{$route.meta.name}}</el-breadcrumb-item>
             </el-breadcrumb>
         </div>
@@ -40,7 +40,25 @@ import Scrollbar from '../scrollbar/Scrollbar'
                 default: function () {
                     return true;
                 }
+            },
+            subMenuContent:{
+                type:Array,
+                default:function(){
+                    return [
+                    {
+                        title:'首页',
+                        icon:'el-icon-s-home',
+                        subTitle:'',
+                        children:[
+                            {
+                                indexTitle:'首页',
+                                path:'/homepage'
+                            }
+                        ]
+                    }
+                ]
             }
+        }
         },
         components: {TabNav,Scrollbar},
         data() {
@@ -49,7 +67,8 @@ import Scrollbar from '../scrollbar/Scrollbar'
                 currentView: null,
                 route: true,
                 authflag:'',
-                homeItem:''
+                homeItem:'',
+                middleBread:''
             }
         },
         watch: {
@@ -58,7 +77,7 @@ import Scrollbar from '../scrollbar/Scrollbar'
                 this.$refs.scrollbar.resetScrollbar();
 
                 this.$emit('handleTabChange');
-
+                this.handlerBread()
                 if (window.routeType === 'back') {
                     window.routeType = '';
                     if(this.currentView.lastView){
@@ -81,6 +100,19 @@ import Scrollbar from '../scrollbar/Scrollbar'
             }
         },
         methods: {
+
+            handlerBread(){
+                let vm = this
+                let temp = ''
+                vm.subMenuContent.forEach(item=>{
+                    temp = item.children.find((v)=>{
+                        return v.path === vm.$route.path
+                    })
+                    if(temp){
+                        vm.middleBread = item.title
+                    }
+                })
+            },
 
             handleCloseOthers(item) {
                 this.views = [item];
@@ -182,7 +214,8 @@ import Scrollbar from '../scrollbar/Scrollbar'
             let vm = this;
             this.authflag = parseInt(sessionStorage.authflag)
             vm.addView();
-
+            vm.handlerBread()
+            // console.log(vm.views)
             vm.$router.updateQuery = function () {
                 window.route = false;
                 vm.$router.push(arguments[0]);

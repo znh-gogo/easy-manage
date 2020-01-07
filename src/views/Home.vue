@@ -18,7 +18,7 @@
           
         <div class="main-body-wrap">
             <slot name="main-body">
-                <TabView :show-nav-tab="showNavTab"></TabView>
+                <TabView :show-nav-tab="showNavTab" :subMenuContent="subMenuContent"></TabView>
             </slot>
         </div>
         <div class="companyText">

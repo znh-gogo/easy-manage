@@ -60,8 +60,14 @@ export default {
         }
     },
     methods:{
-        handleOpen(){},
+        handleOpen(e,keyPath){
+            // console.log(e,keyPath)
+            // window.sessionStorage.subIndex = e
+        },
         handleClose(){},
+        getItems(e){
+            console.log(e)
+        }
     }
 }
 </script>
