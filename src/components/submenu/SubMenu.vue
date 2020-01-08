@@ -1,9 +1,8 @@
 <template>
     <div>
-        <div style="height:60px;display:flex;align-items:center;justify-content:center;" v-if="!isCollapse"><img src="../../assets/title.jpg" style="width:90%;border-radius:10px;height:80%" alt=""></div>
-        <div style="height:60px;line-height:60px;text-align:center;font-size:18px;padding:0 10px;color: #fff;" v-else>
-          通用
-        </div>
+        <div class="topImg" v-if="!isCollapse"><img src="../../assets/title.jpg" alt="logo" title="logo"></div>
+        <div class="topText" v-else>通用</div>
+        <transition name="el-fade-in-linear">
         <el-menu
         class="el-menu-vertical-demo"
         router
@@ -25,6 +24,7 @@
                 </el-menu-item-group>
             </el-submenu>
         </el-menu>
+        </transition>
     </div>
 </template>
 
@@ -73,9 +73,18 @@ export default {
 </script>
 
 <style scoped>
+.topImg{
+    height:60px;display:flex;align-items:center;justify-content:center;
+}
+.topImg img{
+    width:90%;border-radius:10px;height:80%;
+}
+.topText{
+    height:60px;line-height:60px;text-align:center;font-size:18px;padding:0 10px;color: #fff;
+}
 .el-menu-vertical-demo:not(.el-menu--collapse) {
-    max-width: 201px;
-    width:auto;
+    width: 200px;
+    /* width:auto; */
     min-height: 400px;
   }
 </style>
