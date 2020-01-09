@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
-
+import Home from './Index.vue'
+import i18n from './utils/i18n'
 Vue.use(Router)
 /**
  * bug:修复router的promise问题。
@@ -11,7 +11,31 @@ const originalPush = Router.prototype.push
 Router.prototype.push = function push(location) {
   return originalPush.call(this, location).catch(err => err)
 }
+// console.log(i18n.messages.cn.message.menu.accountList)
+// if(localStorage.lang === 'cn'){
+//   console.log(i18n.messages.cn.message.menu.accountList)
+// } else {
+//   console.log(i18n.messages.en.message.menu.accountList)
+// }
+// console.log(localStorage.lang)
 
+// var obj={};
+// let lang = localStorage.lang
+// Object.defineProperty(obj,lang,{
+//     get:function(){
+//         return lang;
+//     },
+//     set:function(newValue){
+//       lang=newValue;
+//         console.log('set :',newValue);
+//         //需要触发的渲染函数可以写在这...
+//         if(lang === 'cn'){
+//           console.log(i18n.messages.cn.message.menu.accountList)
+//         } else {
+//           console.log(i18n.messages.en.message.menu.accountList)
+//         }
+//     }
+// })
 
 const router = new Router({
   // mode: 'history',
@@ -34,7 +58,7 @@ const router = new Router({
           path: '/homepage',
           name: 'homepage',
           component: () => import('./views/homepage.vue'),
-          meta:{name:'管理首页',tab:true}
+          meta:{name:i18n.t('message.menu.home_child_one'),tab:true}
         },
  
         // 商品
@@ -122,7 +146,7 @@ const router = new Router({
           path: '/accountList',
           name: 'accountList',
           component: () => import('./views/Account/accountList.vue'),
-          meta:{name:'用户列表',tab:true}
+          meta:{name:i18n.t('message.menu.accountList'),tab:true}
         },
       ]
     },
@@ -131,10 +155,13 @@ const router = new Router({
   ]
 })
 
+// console.log(router)
+
 router.beforeEach((to,from,next)=>{
   // if(!to.meta.isPublic && !sessionStorage.token){
   //   return next('/login')
   // }
+// console.log(123)
   
   window.document.title = '通用服务平台-'+to.meta.name || '通用服务平台'
   next()

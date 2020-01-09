@@ -7,7 +7,7 @@
         <div style="padding:20px;">
             <!--面包屑-->
             <el-breadcrumb separator="/">
-                <el-breadcrumb-item :to="'/homepage'">首页</el-breadcrumb-item>
+                <el-breadcrumb-item :to="'/homepage'">{{$t('message.menu.home')}}</el-breadcrumb-item>
                 <el-breadcrumb-item>{{middleBread}}</el-breadcrumb-item>
                 <el-breadcrumb-item v-if="$route.meta.name">{{$route.meta.name}}</el-breadcrumb-item>
             </el-breadcrumb>

@@ -4,14 +4,14 @@
             <!-- <div id="header" style="text-align:center;padding:20px 0;font-size:20px">农商产品信息服务平台登陆中心</div> -->
             <div style="text-align:center;"><img src="../assets/title.jpg" style="border-radius:10px" alt=""></div>
             <el-form @submit.native.prevent="login">
-                <el-form-item label="用户名:">
-                    <el-input v-model="model.adminName" placeholder="请输入用户名"></el-input>
+                <el-form-item :label="`${$t('message.login.account')}:`">
+                    <el-input v-model="model.adminName" :placeholder="`${$t('message.login.placeholder_account')}`"></el-input>
                 </el-form-item>
-                <el-form-item label="密码:">
-                    <el-input v-model="model.password" type="password" show-password placeholder="请输入密码"></el-input>
+                <el-form-item :label="`${$t('message.login.password')}:`">
+                    <el-input v-model="model.password" type="password" show-password :placeholder="`${$t('message.login.placeholder_password')}`"></el-input>
                 </el-form-item>
-                <el-form-item label="角色选择:">
-                    <el-select v-model="value" placeholder="请选择" style="width:100%">
+                <el-form-item :label="`${$t('message.login.role')}:`">
+                    <el-select v-model="value" :placeholder="`${$t('message.login.placeholder_role')}`" style="width:100%">
                         <el-option
                         v-for="(item,index) in options"
                         :key="index"
@@ -21,7 +21,7 @@
                     </el-select>
                 </el-form-item>
                 <el-form-item style="text-align:center">
-                    <el-button type="primary" native-type="submit" style="width:80%">登陆</el-button>
+                    <el-button type="primary" native-type="submit" style="width:80%">{{$t('message.login.login')}}</el-button>
                 </el-form-item>
                 <el-form-item style="text-align:center" v-if="adminNum===0">
                     <div>检测到未有管理员，<span style="color:#409EFF;cursor:pointer" @click="$router.push('/origin')">去创建?</span></div>
@@ -38,14 +38,14 @@ export default {
     data (){
         return{
             model:{},
-            value:1,
+            value:'',
             options:[
                 {
-                    label: '管理员',
+                    label: this.$t('message.login.admin'),
                     value: 1
                 },
                 {
-                    label: '商家',
+                    label: this.$t('message.login.seller'),
                     value: 0
                 }
             ],
