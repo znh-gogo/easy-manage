@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="topImg" v-if="!isCollapse"><img src="../../assets/title.jpg" alt="logo" title="logo"></div>
+        <div class="topImg" v-if="!isCollapse"><a href><img src="../../assets/title.jpg" alt="logo" title="logo"></a></div>
         <div class="topText" v-else>通用</div>
         <transition name="el-fade-in-linear">
         <el-menu
@@ -76,8 +76,13 @@ export default {
 .topImg{
     height:60px;display:flex;align-items:center;justify-content:center;
 }
-.topImg img{
-    width:90%;border-radius:10px;height:80%;
+.topImg a{
+    width:85%;height:70%;
+}
+.topImg img {
+    width: 100%;
+    height: 100%;
+    border-radius:10px;
 }
 .topText{
     height:60px;line-height:60px;text-align:center;font-size:18px;padding:0 10px;color: #fff;
