@@ -90,8 +90,8 @@ export default {
             //   this.$route.meta.name = this.$t('message.menu.accountList')
               this.$i18n.locale = lang
               localStorage.lang = lang
-              location.reload()  //页面白屏，全部刷新
-            //   this.reload()  //页面不白屏，组件刷新
+            //   location.reload()  //页面白屏，全部刷新
+              this.reload()  //页面不白屏，组件刷新
           },2000)
       },
       logout(){

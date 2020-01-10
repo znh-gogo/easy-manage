@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './Index.vue'
-import i18n from './utils/i18n'
+// import i18n from './utils/i18n'
 Vue.use(Router)
 /**
  * bug:修复router的promise问题。
@@ -45,7 +45,7 @@ const router = new Router({
       path:'/login',
       name:'login',
       component:() => import('./views/login.vue'),
-      meta:{ isPublic:true,name:'登陆页'}
+      meta:{ isPublic:true}
     },
     {
       path: '/',
@@ -58,7 +58,7 @@ const router = new Router({
           path: '/homepage',
           name: 'homepage',
           component: () => import('./views/homepage.vue'),
-          meta:{name:i18n.t('message.menu.home_child_one'),tab:true}
+          meta:{name:'首页管理',tab:true}
         },
  
         // 商品
@@ -146,7 +146,7 @@ const router = new Router({
           path: '/accountList',
           name: 'accountList',
           component: () => import('./views/Account/accountList.vue'),
-          meta:{name:i18n.t('message.menu.accountList'),tab:true}
+          meta:{name:'账户列表',tab:true}
         },
       ]
     },

@@ -18,7 +18,9 @@ const cn = {
             'language':'语言',
             'setting':'设置',
             'setting_check':'查看',
-            'setting_logout':'退出'
+            'setting_logout':'退出',
+            'close_all':'关闭所有',
+            'close_other':'关闭其他'
         },
         menu:{
             'home':'首页',

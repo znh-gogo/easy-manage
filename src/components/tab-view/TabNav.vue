@@ -3,8 +3,8 @@
 
         <ContextMenu ref="ctxMenu">
             <ul class="nav-ctx-menu">
-                <li @click="handleCloseOthers(ctxMenuItem)">关闭其他</li>
-                <li @click="handleCloseAll">关闭所有</li>
+                <li @click="handleCloseOthers(ctxMenuItem)">{{$t('message.header.close_other')}}</li>
+                <li @click="handleCloseAll">{{$t('message.header.close_all')}}</li>
             </ul>
         </ContextMenu>
 

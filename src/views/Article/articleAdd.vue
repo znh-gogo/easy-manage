@@ -88,8 +88,8 @@ export default {
     },
     created(){
        
-        this.$route.params.id && this.fetchData()
-        this.fetchArticleClassData()
+        // this.$route.params.id && this.fetchData()
+        // this.fetchArticleClassData()
     }
 }
 </script>

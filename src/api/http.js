@@ -6,9 +6,9 @@ const http = axios.create({
 })
 
 http.interceptors.request.use(config  =>{
-    if (sessionStorage.token){
-        config.headers.Authorization= 'Bearer '+ (sessionStorage.token||'')
-    }
+    // if (sessionStorage.token){
+    //     config.headers.Authorization= 'Bearer '+ (sessionStorage.token||'')
+    // }
     return config
 },err =>{
     return Promise.reject(err)

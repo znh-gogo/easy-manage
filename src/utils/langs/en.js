@@ -18,7 +18,9 @@ const en = {
             'language':'language',
             'setting':'setting',
             'setting_check':'check',
-            'setting_logout':'logout'
+            'setting_logout':'logout',
+            'close_all':'CloseAll',
+            'close_other':'CloseOther'
         },
         menu:{
             'home':'HomePage',
