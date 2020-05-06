@@ -7,7 +7,7 @@
         <div style="padding:20px;">
             <!--面包屑-->
             <el-breadcrumb separator="/">
-                <el-breadcrumb-item :to="'/homepage'">首页</el-breadcrumb-item>
+                <el-breadcrumb-item :to="'/homepage'">{{$t('message.menu.home')}}</el-breadcrumb-item>
                 <el-breadcrumb-item>{{middleBread}}</el-breadcrumb-item>
                 <el-breadcrumb-item v-if="$route.meta.name">{{$route.meta.name}}</el-breadcrumb-item>
             </el-breadcrumb>
@@ -19,7 +19,6 @@
                 <component v-show="view === currentView" v-bind:is="view.component" :params="view.params"
                            :query="view.query"
                            :timestamp="view.timestamp"
-                           style="width:calc(100% - 10px)"
                            v-bind:key="view.id"
                            ></component>
                            </transition-group>
@@ -108,7 +107,9 @@ import Scrollbar from '../scrollbar/Scrollbar'
                     temp = item.children.find((v)=>{
                         return v.path === vm.$route.path
                     })
+                    
                     if(temp){
+                        vm.$route.meta.name = temp.indexTitle
                         vm.middleBread = item.title
                     }
                 })
@@ -213,8 +214,8 @@ import Scrollbar from '../scrollbar/Scrollbar'
 
             let vm = this;
             this.authflag = parseInt(sessionStorage.authflag)
-            vm.addView();
             vm.handlerBread()
+            vm.addView();
             // console.log(vm.views)
             vm.$router.updateQuery = function () {
                 window.route = false;

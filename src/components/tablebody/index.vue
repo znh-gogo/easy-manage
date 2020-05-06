@@ -5,29 +5,10 @@
             :header-cell-style="{background:'#eef1f6',color:'#606266'}"
             style="width: 100%">
             <el-table-column
-            prop="_id"
-            label="id"
-            width="240"
-            >
-            </el-table-column>
-            <el-table-column
-            prop="account"
-            label="帐户名"
-            >
-            </el-table-column>
-            <el-table-column
-            prop="email"
-            label="邮箱"
-            >
-            </el-table-column>
-            <el-table-column
-            prop="telephone"
-            label="电话"
-            >
-            </el-table-column>
-            <el-table-column
-            prop="nickname"
-            label="名称"
+            v-for="(item,index) in tableData.tableNameList" :key="index"
+            :prop="item.prop"
+            :label="item.label"
+            :width="item.width?item.width:''"
             >
             </el-table-column>
             <el-table-column

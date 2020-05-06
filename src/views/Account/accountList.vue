@@ -47,13 +47,26 @@ import tableBody from '../../components/tablebody/index'
             allPages:10,
             count:50
           },
+          tableNameList:[
+            {prop:'_id',label:'id',width:240},
+            {prop:'account',label:'帐户名'},
+            {prop:'email',label:'邮箱'},
+            {prop:'telephone',label:'手机'},
+            {prop:'nickname',label:'名称'}
+            ],
           items:[{
+            _id:'1',
             account:'123',
-            email:'32132131'
+            email:'32132131',
+            telephone:11255588,
+            nickname:'jack'
           },
           {
+            _id:'2',
             account:'444',
-            email:'3213552131'
+            email:'3213552131',
+            telephone:13355224,
+            nickname:'mike'
           }]
         },
         controller:{

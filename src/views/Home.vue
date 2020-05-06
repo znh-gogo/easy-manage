@@ -4,7 +4,7 @@
       <el-aside style="background-color: #002140;overflow-x: hidden;" :class="[{'showCollapse':!isCollapse},{'hiddenCollapse':isCollapse}]">
         <SubMenu
         :isCollapse="isCollapse"
-        :subMenuContent="subMenuContent"></SubMenu> 
+        :subMenuContent="menu"></SubMenu> 
       </el-aside>
     
       <el-container style="position:relative;">
@@ -18,7 +18,7 @@
           
         <div class="main-body-wrap">
             <slot name="main-body">
-                <TabView :show-nav-tab="showNavTab" :subMenuContent="subMenuContent"></TabView>
+                <TabView :show-nav-tab="showNavTab" :subMenuContent="menu"></TabView>
             </slot>
         </div>
         <div class="companyText">
@@ -35,7 +35,6 @@
 import TabView from '../components/tab-view/TabView'
 import SubMenu from '../components/submenu/SubMenu'
 import SubHeader from '../components/subheader/SubHeader'
-import menu from '../menu'
 import screenfull from 'screenfull';
 export default {
   name: 'home',
@@ -44,14 +43,33 @@ export default {
     SubMenu,
     SubHeader
   },
+  props:{
+    menu:{
+      type:Array,
+      default:function(){
+          return [
+          {
+              title:'首页',
+              icon:'el-icon-s-home',
+              subTitle:'',
+              children:[
+                  {
+                      indexTitle:'首页',
+                      path:'/homepage'
+                  }
+              ]
+          }
+          ]
+      }
+    }
+  },
   data() {
       return {
         isCollapse: false,
         headimg:'',
         username:'',
         showNavTab:true,
-        isFullScreen: false,
-        subMenuContent:menu
+        isFullScreen: false
       }
     },
     methods:{

@@ -87,7 +87,7 @@ import {ADMIN} from '../../api/globol'
       }
     },
     created(){
-         this.fetchArticle()
+        //  this.fetchArticle()
         
     },
 

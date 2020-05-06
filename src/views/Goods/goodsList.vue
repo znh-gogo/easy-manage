@@ -140,7 +140,7 @@ import {ADMIN} from '../../api/globol'
       }
     },
     created(){
-        this.fetchGoods()
+        // this.fetchGoods()
     },
 
     data() {

@@ -87,7 +87,7 @@ export default {
     },
     created(){
        
-        this.fetchData()
+        // this.fetchData()
         // this.fetchRelativeData()
     }
 }

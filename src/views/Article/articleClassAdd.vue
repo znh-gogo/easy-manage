@@ -71,7 +71,7 @@ export default {
     },
     created(){
     //    console.log(this.$route.params.id)
-        this.$route.params.id && this.fetchData()
+        // this.$route.params.id && this.fetchData()
         // this.fetchRelativeData()
     }
 }

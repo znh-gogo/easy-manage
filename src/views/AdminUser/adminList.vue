@@ -57,7 +57,7 @@ import {ADMIN} from '../../api/globol'
       }
     },
     created(){
-        this.fetchUsers()
+        // this.fetchUsers()
     },
 
     data() {
