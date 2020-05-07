@@ -3,14 +3,23 @@
         <el-table
             :data="tableData.items"
             :header-cell-style="{background:'#eef1f6',color:'#606266'}"
+            @selection-change="handleSelectionChange"
+            @sort-change="sortChange"
             style="width: 100%">
+            <el-table-column
+            type="selection"
+            width="55">
+            </el-table-column>
             <el-table-column
             v-for="(item,index) in tableData.tableNameList" :key="index"
             :prop="item.prop"
             :label="item.label"
             :width="item.width?item.width:''"
+            :sortable="item.sortable?item.sortable:false"
+            :formatter="item.formatter"
             >
             </el-table-column>
+            
             <el-table-column
             v-if="controller.isActive"
             fixed="right"
@@ -57,6 +66,12 @@ export default {
     methods:{
         changePage(e){
             this.$emit('changePage',e)
+        },
+        handleSelectionChange(val) {
+            this.$emit('handleSelectionChange',val)
+        },
+        sortChange(e){
+            this.$emit('sortChange',e)
         }
     }
 }

@@ -10,10 +10,18 @@ const api = {
   register(data) {
     return request('/api/register', data, 'post')
   },
-
+  addAccount(data){
+    return request('/api/addAccount', data, 'post')
+  },
+  updateAccount(data){
+    return request('/api/updateAccount', data, 'post')
+  },
+  deleteAccount(data){
+    return request('/api/deleteAccount', data, 'post')
+  },
   //个人中心
-  showAccount(id,data) {
-    return request(MOBILE+'/showAccount/'+id,data, 'post')
+  showAccount(data) {
+    return request('/api/showAccountList',data, 'get')
   },
 
   

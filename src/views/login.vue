@@ -5,7 +5,7 @@
             <div style="text-align:center;"><img src="../assets/title.jpg" style="border-radius:10px" alt=""></div>
             <el-form @submit.native.prevent="login">
                 <el-form-item :label="`${$t('message.login.account')}:`">
-                    <el-input v-model="model.adminName" :placeholder="`${$t('message.login.placeholder_account')}`"></el-input>
+                    <el-input v-model="model.name" :placeholder="`${$t('message.login.placeholder_account')}`"></el-input>
                 </el-form-item>
                 <el-form-item :label="`${$t('message.login.password')}:`">
                     <el-input v-model="model.password" type="password" show-password :placeholder="`${$t('message.login.placeholder_password')}`"></el-input>
@@ -71,17 +71,17 @@ export default {
                 let form = new FormData()
                 form.append("name",this.model.name)
                 form.append("password",this.model.password)
-                this.$http.register(form).then(res=>{
-                    console.log(res)
-                })
-                // this.$router.push('/')
-                // this.$message.success('登陆成功')
-                // Notification({
-                //         title:'您好,登陆成功',
-                //         message:'希望您能拥有美好的一天，加油！',
-                //         type:'success',
-                //         duration: 3000
-                //     })
+                // this.$http.register(form).then(res=>{
+                //     console.log(res)
+                // })
+                this.$router.push('/')
+                this.$message.success('登陆成功')
+                Notification({
+                        title:'您好,登陆成功',
+                        message:'希望您能拥有美好的一天，加油！',
+                        type:'success',
+                        duration: 3000
+                    })
                 
             }   
         },
